@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Client &amp; Corporate Onboarding Registration | ASIL Logistics</title>
+  <meta name="description"
+    content="Register as an individual client or corporate enterprise account with ASIL Logistics for commercial freight, credit invoicing, and VIP transport.">
+  <meta property="og:title" content="Client &amp; Corporate Onboarding Registration | ASIL Logistics">
+  <meta property="og:description"
+    content="Commercial account onboarding, corporate freight KYC, and client registration.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/img/logo.svg">
+  <meta property="og:site_name" content="ASIL Logistics">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#0e3b43">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ASIL">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="stylesheet" href="/css/asil-core.css">
+  <link rel="stylesheet" href="/css/asil-design.css">
+  <link rel="stylesheet" href="/css/department-dashboard.css">
+  <link rel="stylesheet" href="/css/asil-app.css">
+  <script src="/js/pwa.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Header Navigation (5 Menu Items Max + 1 Quote Button, No Admin/Staff in Header) -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="/" class="brand-link" aria-label="ASIL Logistics Home">
+        <img src="/img/logo.svg" alt="ASIL Logistics Logo" height="42" width="140">
+      </a>
+      <nav class="nav-menu" id="mainNav" aria-label="Primary Navigation">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link active" href="/#services">Services</a>
+        <a class="nav-link" href="/#about">About</a>
+        <a class="nav-link" href="/#tracking-section">Track</a>
+        <a class="nav-link" href="/#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/admin" class="nav-link" style="color:var(--gold);font-weight:700;padding:8px 12px;font-size:13.5px;text-decoration:none;">Admin</a>
+        <a href="/portal?mode=login&next=/order" class="nav-link"
+          style="color:var(--text-nav);font-weight:600;padding:8px 12px;font-size:14px;text-decoration:none;">Sign
+          in</a>
+        <a href="/#service-request" class="btn-gold"
+          style="padding:10px 18px;font-size:13.5px;text-decoration:none;">Request Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Department Hero Section -->
+  <section class="dept-hero-section onboard-hero">
+    <div class="container">
+      <div class="dept-badge-pill">
+        <span class="pulse-indicator"></span> Commercial Client Intake
+      </div>
+      <h1 class="dept-hero-title">Corporate Client Onboarding &amp; Commercial KYC</h1>
+      <p class="dept-hero-sub">
+        Institutional logistics agreements, corporate billing accounts, dedicated SLA contracts, and regulatory
+        documentation for commercial enterprises.
+      </p>
+    </div>
+  </section>
+
+  <!-- 1. PUBLIC REGISTRATION MODE -->
+  <main class="container" id="view-apply" style="display:block;">
+    <div class="form-card">
+      <div
+        style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:24px;">
+        <div>
+          <h2 style="font-size:24px;font-weight:800;color:var(--primary);">ASIL Client Registration &amp; KYC
+            Verification</h2>
+          <p style="color:var(--text-muted);font-size:14px;margin-top:4px;">Open an institutional or private trade
+            account with verified billing and dedicated priority dispatch.</p>
+        </div>
+        <span class="badge badge-info">KYC Compliance Required</span>
+      </div>
+
+      <!-- Quick Steps -->
+      <div class="kyc-step-grid">
+        <div class="kyc-step-box">
+          <div class="kyc-step-num">1</div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Entity Selection</div>
+          <div style="font-size:12px;color:var(--text-muted);">Choose Individual or Corporate Legal Account</div>
+        </div>
+        <div class="kyc-step-box">
+          <div class="kyc-step-num">2</div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Profile &amp; Documents</div>
+          <div style="font-size:12px;color:var(--text-muted);">Submit verification details and business identifiers
+          </div>
+        </div>
+        <div class="kyc-step-box">
+          <div class="kyc-step-num">3</div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Compliance Review</div>
+          <div style="font-size:12px;color:var(--text-muted);">Onboarding officers verify trade compliance</div>
+        </div>
+        <div class="kyc-step-box">
+          <div class="kyc-step-num">4</div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Portal Activation</div>
+          <div style="font-size:12px;color:var(--text-muted);">Direct invoicing and corporate service rates</div>
+        </div>
+      </div>
+
+      <form id="onboardingForm" data-handler="submitOnboarding">
+        <!-- Customer Type Toggle -->
+        <div class="form-group">
+          <label class="form-label" style="font-size:15px;font-weight:700;">Account Category *</label>
+          <div class="type-selector-bar">
+            <label class="type-radio-label active" id="lbl-ind">
+              <input type="radio" name="customerType" value="individual" checked>
+              Individual Customer
+            </label>
+            <label class="type-radio-label" id="lbl-comp">
+              <input type="radio" name="customerType" value="company">
+              Corporate / Enterprise Account
+            </label>
+          </div>
+        </div>
+
+        <!-- Corporate Specific Fields -->
+        <div id="corporateFields"
+          style="display:none;background:var(--bg-soft);padding:20px;border-radius:var(--radius-md);margin-bottom:20px;border:1px solid var(--line);">
+          <h4 style="font-size:15px;font-weight:800;color:var(--primary);margin-bottom:12px;">Corporate Legal Entity
+            Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Registered Company Name *</label>
+              <input type="text" class="form-control" id="companyName">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Commercial Registration Number</label>
+              <input type="text" class="form-control" id="companyReg">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Tax Identification Number (TIN)</label>
+              <input type="text" class="form-control" id="taxId">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Authorized Contact Person &amp; Title</label>
+              <input type="text" class="form-control" id="contactPerson">
+            </div>
+          </div>
+        </div>
+
+        <!-- General Contact Info -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" id="nameLabel">Full Name (Primary Account Holder) *</label>
+            <input type="text" class="form-control" id="fullName" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Corporate / Personal Email *</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Official Telephone Number *</label>
+            <input type="tel" class="form-control" id="phone" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Billing &amp; Registered Address *</label>
+            <input type="text" class="form-control" id="billingAddress" required>
+          </div>
+        </div>
+
+        <!-- Logistics Profile -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Primary Services Required</label>
+            <select class="form-control" id="serviceInterest">
+              <option value="All Logistics Services">Integrated Logistics (Transport + Distribution)</option>
+              <option value="Passenger Fleet Only">Passenger Transportation &amp; Executive Chauffeur</option>
+              <option value="Cargo Freight Only">Cargo &amp; Heavy Freight Distribution</option>
+              <option value="Facility Maintenance">Building &amp; Facility Maintenance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Estimated Monthly Volume / Scope</label>
+            <select class="form-control" id="volumeScope">
+              <option value="Regular (1 - 5 shipments/trips monthly)">Regular (1 - 5 shipments/trips monthly)</option>
+              <option value="Medium (5 - 20 shipments/trips monthly)">Medium (5 - 20 shipments/trips monthly)</option>
+              <option value="High Enterprise (20+ monthly freight)">High Enterprise (20+ monthly freight)</option>
+              <option value="One-Time / Ad-hoc">One-Time / Ad-hoc</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Special Invoicing or Operations Requirements (Optional)</label>
+          <textarea class="form-control" id="notes" rows="3"></textarea>
+        </div>
+
+        <div
+          style="background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px;margin:20px 0;font-size:13px;color:var(--text-muted);">
+          ℹ️ <strong>ASIL Compliance Guarantee:</strong> All client information and trade documentation are protected
+          under strict commercial confidentiality agreements and processed in accordance with national transport
+          regulations.
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:12px;">
+          <button type="reset" class="btn-outline">Reset</button>
+          <button type="submit" class="btn-primary" id="btnSubmitOnboarding">Submit Onboarding Application
+            &rarr;</button>
+        </div>
+      </form>
+
+      <!-- Confirmation Notice -->
+      <div id="onboardingSuccessNotice"
+        style="display:none;margin-top:24px;background:#ecfdf5;border:1px solid #a7f3d0;padding:24px;border-radius:var(--radius-md);">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="font-size:32px;">✅</div>
+          <div>
+            <h3 style="color:#065f46;margin-bottom:6px;font-size:18px;">Application Registered Successfully!</h3>
+            <p style="color:#047857;font-size:14px;margin-bottom:12px;">
+              Your application reference is <strong id="newClientRef"
+                style="background:#fff;padding:2px 8px;border-radius:4px;border:1px solid #10b981;font-size:15px;letter-spacing:1px;"></strong>.
+              Our Onboarding Officers will verify your compliance documentation and activate your account.
+            </p>
+            <div style="display:flex;gap:12px;margin-top:8px;">
+              <button class="btn-primary btn-sm" id="btnTrackNewClient">Track Verification Status</button>
+              <a href="/portal" class="btn-outline btn-sm">Proceed to Customer Portal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 2. TRACKING MODE -->
+  <main class="container" id="view-track" style="display:none;padding:32px 0;">
+    <div class="form-card" style="max-width:760px;margin:0 auto;">
+      <h2 style="font-size:22px;font-weight:800;color:var(--primary);margin-bottom:8px;">Track Client Onboarding Status
+      </h2>
+      <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">
+        Enter your Onboarding Application Reference Number (e.g. <code>ONB-2026-XXXXXX</code>) to view the current KYC
+        and verification progress.
+      </p>
+
+      <div style="display:flex;gap:12px;margin-bottom:24px;">
+        <input type="text" class="form-control" id="trackInput"
+          style="font-size:16px;font-weight:700;text-transform:uppercase;">
+        <button class="btn-primary" id="btnLookupClientStatus" style="white-space:nowrap;">Check Status</button>
+      </div>
+
+      <div id="trackResultBox" style="display:none;"></div>
+    </div>
+  </main>
+
+  <!-- 3. STAFF DASHBOARD MODE -->
+  <main class="container" id="view-dashboard" style="display:none;padding:32px 0;">
+    <!-- Access Check Banner -->
+    <div id="authGateNotice" style="display:none;" class="dash-card">
+      <div style="text-align:center;padding:32px;">
+        <div
+          style="width:48px;height:48px;border-radius:12px;background:rgba(14,59,67,0.1);color:#0e3b43;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+        </div>
+        <h3 style="color:var(--primary);margin-bottom:8px;">Onboarding Officer Authentication Required</h3>
+        <p style="color:var(--text-muted);font-size:14px;max-width:500px;margin:0 auto 20px;">
+          The Onboarding &amp; KYC Management Console is restricted to authorized Onboarding Officers and Super
+          Administrators.
+        </p>
+        <button class="btn-primary" id="btnPromptLogin">Sign In as Onboarding Staff</button>
+      </div>
+    </div>
+
+    <!-- Active Staff Interface -->
+    <div id="staffInterface" style="display:none;">
+      <div class="dept-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="dept-sidebar">
+          <div class="sidebar-user">
+            <div class="user-avatar" id="officerAvatar">OB</div>
+            <div class="user-info">
+              <div class="user-name" id="officerName">Officer Onboarding</div>
+              <div class="user-role" id="officerRole">Client KYC Specialist</div>
+            </div>
+          </div>
+
+          <ul class="sidebar-nav">
+            <li>
+              <button class="side-btn active" id="sbtn-overview" data-tab="overview">
+                <svg class="side-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="width:16px;height:16px;">
+                  <rect x="3" y="3" width="7" height="9" rx="1" />
+                  <rect x="14" y="3" width="7" height="5" rx="1" />
+                  <rect x="14" y="12" width="7" height="9" rx="1" />
+                  <rect x="3" y="16" width="7" height="5" rx="1" />
+                </svg>
+                <span>Department Overview</span>
+              </button>
+            </li>
+            <li>
+              <button class="side-btn" id="sbtn-intake" data-tab="intake">
+                <svg class="side-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="width:16px;height:16px;">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+                <span>Client Intake Queue</span>
+              </button>
+            </li>
+            <li>
+              <button class="side-btn" id="sbtn-approved" data-tab="approved">
+                <svg class="side-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="width:16px;height:16px;">
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                  <path d="M9 22v-4h6v4" />
+                  <path d="M8 6h.01" />
+                  <path d="M16 6h.01" />
+                  <path d="M8 10h.01" />
+                  <path d="M16 10h.01" />
+                  <path d="M8 14h.01" />
+                  <path d="M16 14h.01" />
+                </svg>
+                <span>Verified Clients</span>
+              </button>
+            </li>
+          </ul>
+
+          <div style="margin-top:auto;padding-top:20px;border-top:1px solid var(--line);">
+            <button class="btn-outline btn-sm" style="width:100%;" id="btnLogoutOfficer">Sign Out</button>
+          </div>
+        </aside>
+
+        <!-- Main Department Content Area -->
+        <section class="dept-content">
+          <!-- TOP METRICS STRIP -->
+          <div class="kpi-grid" id="onbMetrics">
+            <div class="kpi-card">
+              <div class="kpi-val" id="metric-total">0</div>
+              <div class="kpi-lbl">Total Applications</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val" id="metric-pending" style="color:var(--warning);">0</div>
+              <div class="kpi-lbl">Pending Review</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val" id="metric-approved" style="color:var(--success);">0</div>
+              <div class="kpi-lbl">Approved Accounts</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val" id="metric-corporate" style="color:var(--primary);">0</div>
+              <div class="kpi-lbl">Corporate Entities</div>
+            </div>
+          </div>
+
+          <!-- TAB 1: OVERVIEW -->
+          <div id="tab-overview" class="dash-tab">
+            <div class="dash-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3 style="font-size:18px;font-weight:800;color:var(--primary);">Client Intake Pipeline</h3>
+                <button class="btn-outline btn-sm" id="btnReloadOnboarding"
+                  style="display:inline-flex;align-items:center;gap:6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 4 23 10 17 10" />
+                    <polyline points="1 20 1 14 7 14" />
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                  </svg>
+                  Refresh
+                </button>
+              </div>
+              <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">
+                Real-time queue of commercial and private entities awaiting KYC credential validation and corporate
+                onboarding sign-off.
+              </p>
+              <div class="data-table-wrap">
+                <table class="data-table" id="recentClientsTable">
+                  <thead>
+                    <tr>
+                      <th>Ref ID</th>
+                      <th>Account Type</th>
+                      <th>Entity / Contact</th>
+                      <th>Email &amp; Phone</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentClientsBody">
+                    <tr>
+                      <td colspan="6" style="text-align:center;padding:24px;">Loading intake pipeline...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: INTAKE QUEUE -->
+          <div id="tab-intake" class="dash-tab" style="display:none;">
+            <div class="dash-card">
+              <div
+                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+                <h3 style="font-size:18px;font-weight:800;color:var(--primary);">Pending Client Intake Queue</h3>
+                <div style="display:flex;gap:8px;">
+                  <input type="text" id="queueSearch" class="form-control"
+                    style="font-size:13px;width:220px;">
+                  <select id="queueFilter" class="form-control" style="font-size:13px;width:150px;">
+                    <option value="all">All Types</option>
+                    <option value="company">Corporate Only</option>
+                    <option value="individual">Individual Only</option>
+                  </select>
+                </div>
+              </div>
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Entity Category</th>
+                      <th>Organization / Applicant</th>
+                      <th>Registration / Tax</th>
+                      <th>Billing Address</th>
+                      <th>KYC Status</th>
+                      <th>Review</th>
+                    </tr>
+                  </thead>
+                  <tbody id="allClientsBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: VERIFIED CLIENTS -->
+          <div id="tab-approved" class="dash-tab" style="display:none;">
+            <div class="dash-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3 style="font-size:18px;font-weight:800;color:var(--primary);">Active Verified Commercial Clients</h3>
+                <span class="badge badge-success">Approved Accounts</span>
+              </div>
+              <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">
+                Entities whose KYC verification and billing credentials have been fully authenticated.
+              </p>
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Ref ID</th>
+                      <th>Organization Name</th>
+                      <th>Contact Person</th>
+                      <th>Direct Billing Address</th>
+                      <th>Approved Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="verifiedClientsBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- KYC REVIEW MODAL -->
+  <div id="kycModal"
+    style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+    <div
+      style="background:#fff;border-radius:var(--radius-lg);max-width:600px;width:100%;box-shadow:var(--shadow-lg);padding:28px;max-height:90vh;overflow-y:auto;">
+      <div
+        style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:12px;">
+        <h3 style="font-size:18px;font-weight:800;color:var(--primary);">KYC Compliance Review &bull; <span
+            id="modalClientRef"></span></h3>
+        <button style="background:none;border:none;font-size:20px;cursor:pointer;"
+          id="btnCloseKycModal">&times;</button>
+      </div>
+      <div id="modalClientDetails"
+        style="background:var(--bg-soft);padding:16px;border-radius:var(--radius-md);margin-bottom:16px;font-size:13px;line-height:1.6;">
+      </div>
+
+      <form id="kycActionForm">
+        <input type="hidden" id="modalClientId">
+        <div class="form-group">
+          <label class="form-label">Compliance Decision *</label>
+          <select class="form-control" id="modalDecisionStatus">
+            <option value="Pending">Pending Review</option>
+            <option value="In Review">In Review (Compliance Underway)</option>
+            <option value="Approved">Approved (Corporate Account Activated)</option>
+            <option value="Rejected">Rejected (Incomplete KYC / Regulatory Block)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Officer Compliance Notes / Terms</label>
+          <textarea class="form-control" id="modalDecisionNotes" rows="3"></textarea>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:16px;">
+          <button type="button" class="btn-outline" id="btnCancelKycModal">Cancel</button>
+          <button type="submit" class="btn-primary" id="btnSaveKyc">Update Client Status</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer"></footer>
+
+  <script src="/js/asil-common.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/onboarding.js"></script>
+</body>
+
+</html>

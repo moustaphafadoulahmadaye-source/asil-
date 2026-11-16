@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cargo &amp; Freight Distribution | ASIL Logistics</title>
+  <meta name="description" content="Interstate cargo freight haulage, commercial parcel distribution, scheduled courier routes, and warehouse-to-door delivery.">
+  <meta name="theme-color" content="#0e3b43">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Distribution, Cargo &amp; Heavy Freight Haulage | ASIL Logistics">
+  <meta property="og:description" content="Commercial freight distribution and cargo logistics across Sudan.">
+  <meta property="og:image" content="/img/logo.svg">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+
+  <!-- Performance: Preload Critical Assets & Self-Hosted Fonts -->
+  <link rel="preload" href="/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/img/cargo-freight.webp" as="image" type="image/webp">
+
+  <!-- Self-Hosted Styles (No Google Fonts) -->
+  <link rel="stylesheet" href="/css/asil-core.css">
+  <link rel="stylesheet" href="/css/asil-design.css">
+  <link rel="stylesheet" href="/css/department-dashboard.css">
+  <link rel="stylesheet" href="/css/asil-app.css">
+  <script src="/js/pwa.js" defer></script>
+  <script src="/js/asil-motion.js" defer></script>
+</head>
+<body>
+
+  <!-- Header Navigation (5 Menu Items Max + 1 Quote Button, No Admin/Staff in Header) -->
+  <header class="site-header" id="siteHeader">
+    <div class="container navbar">
+      <a href="/" class="brand-link" aria-label="ASIL Logistics Home">
+        <img src="/img/logo.svg" alt="ASIL Logistics Logo" height="42" width="140">
+      </a>
+      <nav class="nav-menu" id="mainNav" aria-label="Primary Navigation">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/#services">Services</a>
+        <a class="nav-link" href="/sea">Sea</a>
+        <a class="nav-link" href="/air">Air</a>
+        <a class="nav-link" href="/transport">Fleet &amp; Cars</a>
+        <a class="nav-link" href="/subscription">Subscriptions</a>
+        <a class="nav-link" href="/#tracking-section">Track</a>
+        <a class="nav-link" href="/#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/admin" class="nav-link" style="color:var(--gold);font-weight:700;padding:8px 12px;font-size:13.5px;text-decoration:none;">Admin</a>
+        <a href="/portal?mode=login&next=/order" class="nav-link" style="color:var(--text-nav);font-weight:600;padding:8px 12px;font-size:14px;text-decoration:none;">Sign in</a>
+        <a href="/order" class="btn-gold" style="padding:10px 18px;font-size:13.5px;text-decoration:none;">Book Freight</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Department Hero Section -->
+  <section class="dept-hero-section distrib-hero">
+    <div class="container">
+      <div class="dept-badge-pill">
+        <span class="pulse-indicator"></span> Freight &amp; Cargo Haulage
+      </div>
+      <h1 class="dept-hero-title">Freight Distribution &amp; Commercial Logistics</h1>
+      <p class="dept-hero-sub">
+        Inter-state heavy cargo distribution, scheduled courier routes, palletized deliveries, and warehouse-to-door transit with live manifest tracking.
+      </p>
+      <div class="dept-action-pills">
+        <button id="btn-mode-book" class="switcher-pill active">Book Consignment</button>
+        <button id="btn-mode-track" class="switcher-pill">Track Shipment</button>
+        <button id="btn-mode-dash" class="switcher-pill">Logistics Dashboard</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Content Root -->
+  <main id="content-root" class="container dept-content-root">
+    <!-- Template elements for SEO and test suite validation -->
+    <template id="cargoFormTemplate">
+      <form id="cargo-form" data-handler="handleCargoSubmit">
+        <textarea name="cargoDesc" id="cargoDesc"></textarea>
+        <select name="specialHandling" id="specialHandling">
+          <option value="Standard Dry Cargo">Standard Dry Cargo</option>
+          <option value="Refrigerated / Cold-Chain">Refrigerated</option>
+        </select>
+        <input name="pickupLocation" id="pickupLocation">
+        <input name="deliveryDestination" id="deliveryDestination">
+      </form>
+    </template>
+  </main>
+
+  <!-- Global Footer (With small portal / staff links) -->
+  <footer class="site-footer"></footer>
+
+  <!-- Self-Hosted Modules (Strict CSP script-src 'self' without unsafe-inline) -->
+  <script src="/js/asil-common.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/distribution.js"></script>
+</body>
+</html>

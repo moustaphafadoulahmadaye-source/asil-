@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Book a Shipment | ASIL Logistics</title>
+  <meta name="description"
+    content="Book freight transport, select trade corridors, obtain verified transit schedules, and track cargo across Sudan.">
+  <meta name="theme-color" content="#0e3b43">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+
+  <!-- Self-Hosted Styles -->
+  <link rel="stylesheet" href="/css/asil-core.css">
+  <link rel="stylesheet" href="/css/asil-design.css">
+  <link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/css/order-journey.css">
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-items">
+        <span class="topbar-item" id="topbar-phone"></span>
+        <span class="topbar-item" id="topbar-email"></span>
+      </div>
+      <div class="topbar-items">
+        <span class="topbar-item">24/7 Operations Desk</span>
+        <a href="/portal" id="topbarUserLink" style="color:rgba(255,255,255,0.85);text-decoration:none;">My Account
+          &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container navbar">
+      <a href="/" class="brand-link" aria-label="ASIL Logistics Home">
+        <img src="/img/logo.svg" alt="ASIL Logistics" height="40" width="135">
+      </a>
+      <nav class="nav-menu" id="mainNav" aria-label="Primary Navigation">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/#services">Services</a>
+        <a class="nav-link" href="/#about">About</a>
+        <a class="nav-link" href="/#tracking-section">Track</a>
+        <a class="nav-link" href="/#contact">Contact</a>
+        <a class="nav-link" href="/admin" style="color:var(--gold);font-weight:700;">Admin</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/admin" class="nav-link"
+          style="color:var(--gold);font-weight:700;padding:8px 12px;font-size:13.5px;text-decoration:none;">Admin</a>
+        <a href="/portal" class="btn-outline" style="font-size:13.5px;padding:8px 16px;">My Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="order-main">
+    <div class="container py-8">
+
+      <!-- Stepper -->
+      <nav class="cj-stepper" id="orderStepper" aria-label="Order Wizard Steps">
+        <div class="cj-step-item is-active" id="stepIndicator1">
+          <div class="cj-step-circle">1</div>
+          <div class="cj-step-text">
+            <span class="cj-step-num">Step 1</span>
+            <span class="cj-step-name">Cargo Details</span>
+          </div>
+        </div>
+        <div class="cj-step-item is-pending" id="stepIndicator2">
+          <div class="cj-step-circle">2</div>
+          <div class="cj-step-text">
+            <span class="cj-step-num">Step 2</span>
+            <span class="cj-step-name">Route &amp; Address</span>
+          </div>
+        </div>
+        <div class="cj-step-item is-pending" id="stepIndicator3">
+          <div class="cj-step-circle">3</div>
+          <div class="cj-step-text">
+            <span class="cj-step-num">Step 3</span>
+            <span class="cj-step-name">Transport Mode</span>
+          </div>
+        </div>
+        <div class="cj-step-item is-pending" id="stepIndicator4">
+          <div class="cj-step-circle">4</div>
+          <div class="cj-step-text">
+            <span class="cj-step-num">Step 4</span>
+            <span class="cj-step-name">Review &amp; Confirm</span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ===================================================================
+           STEP 1: WHAT ARE YOU SENDING
+           =================================================================== -->
+      <section class="cj-card" id="stepPanel1">
+        <div class="cj-card-header">
+          <h2 class="cj-card-title">1. What are you sending?</h2>
+          <p class="cj-card-desc">Choose between commercial freight movement and operational facility services.</p>
+        </div>
+
+        <!-- Service Category Selector -->
+        <div class="cj-service-selector">
+          <label class="cj-service-radio is-selected" id="lblOptFreight">
+            <input type="radio" name="orderCategory" value="cargo" checked>
+            <div>
+              <div class="cj-service-radio-title">Freight &amp; Cargo Transport</div>
+              <div class="cj-service-radio-desc">Commercial haulage, containers, agricultural &amp; dry freight.</div>
+            </div>
+          </label>
+          <label class="cj-service-radio" id="lblOptOps">
+            <input type="radio" name="orderCategory" value="service">
+            <div>
+              <div class="cj-service-radio-title">Facility &amp; Operational Services</div>
+              <div class="cj-service-radio-desc">Maintenance, commercial cleaning, warehousing, procurement.</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- SUB-PANEL A: CARGO FORM -->
+        <div id="subPanelCargo">
+          <div class="cj-form-grid">
+            <div class="cj-col-6 cj-field" id="fieldCargoType">
+              <label class="cj-label" for="cargoType">Goods Category *</label>
+              <select id="cargoType" class="cj-select" required>
+                <option value="General Commercial Goods">General Commercial Goods</option>
+                <option value="Agricultural Produce & Commodities">Agricultural Produce &amp; Commodities</option>
+                <option value="Industrial Machinery & Spare Parts">Industrial Machinery &amp; Parts</option>
+                <option value="Pharmaceutical & Temperature Controlled">Temperature-Controlled / Pharma</option>
+                <option value="Raw Materials & Construction">Raw Materials &amp; Building Supplies</option>
+                <option value="Consumer Packaged Goods">Consumer Packaged Goods</option>
+              </select>
+              <span class="cj-error-msg">Please select a goods category.</span>
+            </div>
+
+            <div class="cj-col-6 cj-field" id="fieldVehiclePref">
+              <label class="cj-label" for="vehiclePref">Vehicle Preference *</label>
+              <select id="vehiclePref" class="cj-select" required>
+                <option value="Heavy Flatbed Truck (20-40 Ton)">Heavy Flatbed Truck (20-40 Ton)</option>
+                <option value="Enclosed Box Cargo Truck (5-10 Ton)">Enclosed Box Truck (5-10 Ton)</option>
+                <option value="Refrigerated Cold-Chain Reefer">Cold-Chain Reefer Truck</option>
+                <option value="Container Intermodal Skeletal">40ft ISO Container Chassis</option>
+                <option value="Light Commercial Hauler (2-3 Ton)">Light Commercial Truck (2-3 Ton)</option>
+              </select>
+            </div>
+
+            <div class="cj-col-12 cj-field" id="fieldCargoDesc">
+              <label class="cj-label" for="cargoDesc">Goods Description * <span class="cj-label-hint">What items are being transported</span></label>
+              <input type="text" id="cargoDesc" class="cj-input" required>
+              <span class="cj-error-msg">Please enter a description of the goods.</span>
+            </div>
+
+            <div class="cj-col-6 cj-field" id="fieldCargoWeight">
+              <label class="cj-label" for="cargoWeight">Estimated Weight * <span class="cj-label-hint">e.g. 1,500 kg or
+                  2.5 Tons</span></label>
+              <input type="text" id="cargoWeight" class="cj-input" required>
+              <span class="cj-error-msg">Please provide the estimated total weight.</span>
+            </div>
+
+            <div class="cj-col-6 cj-field" id="fieldPackagesCount">
+              <label class="cj-label" for="packagesCount">Number of Packages / Units *</label>
+              <input type="number" id="packagesCount" class="cj-input" value="1" min="1" max="10000" required>
+              <span class="cj-error-msg">Please enter at least 1 package.</span>
+            </div>
+
+            <div class="cj-col-12 cj-field">
+              <label class="cj-label">Handling Requirements (Optional)</label>
+              <div class="cj-check-grid">
+                <label class="cj-check-label">
+                  <input type="checkbox" id="chkFragile"> Fragile / Delicate Cargo
+                </label>
+                <label class="cj-check-label">
+                  <input type="checkbox" id="chkKeepDry"> Keep Dry / Weather Cover
+                </label>
+                <label class="cj-check-label">
+                  <input type="checkbox" id="chkPalletized"> Palletized Consignment
+                </label>
+                <label class="cj-check-label">
+                  <input type="checkbox" id="chkHeavyLift"> Forklift / Crane Loading
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="cj-actions-row">
+            <span></span>
+            <button type="button" class="cj-btn-primary" id="btnGoToStep2">Continue to Route &rarr;</button>
+          </div>
+        </div>
+
+        <!-- SUB-PANEL B: OPERATIONAL SERVICES SHORT FORM -->
+        <div id="subPanelOps" style="display:none;">
+          <div class="cj-form-grid">
+            <div class="cj-col-6 cj-field">
+              <label class="cj-label" for="opsServiceType">Service Type *</label>
+              <select id="opsServiceType" class="cj-select" required>
+                <option value="Building & Facilities Maintenance">Building &amp; Facilities Maintenance</option>
+                <option value="Commercial Cleaning & Sanitization">Commercial Cleaning &amp; Sanitization</option>
+                <option value="Facility Grounds Care & Gardening">Grounds Care &amp; Gardening</option>
+                <option value="Procurement & Supply Sourcing">Procurement Sourcing &amp; Supplies</option>
+                <option value="Secure Warehousing & Storage">Secure Warehousing &amp; Inventory Storage</option>
+              </select>
+            </div>
+
+            <div class="cj-col-6 cj-field">
+              <label class="cj-label" for="opsPreferredDate">Preferred Service Date *</label>
+              <input type="date" id="opsPreferredDate" class="cj-input" required>
+            </div>
+
+            <div class="cj-col-6 cj-field">
+              <label class="cj-label" for="opsAddress">Facility Location / Address *</label>
+              <input type="text" id="opsAddress" class="cj-input" required>
+            </div>
+
+            <div class="cj-col-6 cj-field">
+              <label class="cj-label" for="opsPriority">Priority Level *</label>
+              <select id="opsPriority" class="cj-select">
+                <option value="normal">Standard Operational (Normal)</option>
+                <option value="urgent">Urgent / Priority Dispatch</option>
+              </select>
+            </div>
+
+            <div class="cj-col-12 cj-field">
+              <label class="cj-label" for="opsDescription">Work Scope &amp; Instructions *</label>
+              <textarea id="opsDescription" class="cj-textarea" required></textarea>
+            </div>
+          </div>
+
+          <div id="opsStatusAlert" style="margin-top:16px;display:none;"></div>
+
+          <div class="cj-actions-row">
+            <span></span>
+            <button type="button" class="cj-btn-primary" id="btnSubmitOpsRequest">Submit Service Request &rarr;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STEP 2: ROUTE & ADDRESSES
+           =================================================================== -->
+      <section class="cj-card" id="stepPanel2" style="display:none;">
+        <div class="cj-card-header">
+          <h2 class="cj-card-title">2. Route &amp; Locations</h2>
+          <p class="cj-card-desc">Where do the goods come from, and where should they be delivered?</p>
+        </div>
+
+        <div class="cj-form-grid">
+          <!-- Origin Group -->
+          <div class="cj-col-6 cj-field" id="fieldOriginLocation">
+            <label class="cj-label" for="originLocation">Origin Logistics Hub *</label>
+            <select id="originLocation" class="cj-select" required>
+              <option value="">Loading logistics hubs...</option>
+            </select>
+            <span class="cj-error-msg">Please select an origin hub.</span>
+          </div>
+
+          <!-- Destination Group -->
+          <div class="cj-col-6 cj-field" id="fieldDestLocation">
+            <label class="cj-label" for="destLocation">Destination Logistics Hub *</label>
+            <select id="destLocation" class="cj-select" required>
+              <option value="">Loading logistics hubs...</option>
+            </select>
+            <span class="cj-error-msg">Please select a destination hub.</span>
+          </div>
+
+          <div class="cj-col-6 cj-field">
+            <label class="cj-label" for="pickupAddress">Specific Pickup Address * <span class="cj-label-hint">Warehouse, gate, or depot</span></label>
+            <input type="text" id="pickupAddress" class="cj-input" required>
+          </div>
+
+          <div class="cj-col-6 cj-field">
+            <label class="cj-label" for="deliveryAddress">Specific Delivery Address * <span class="cj-label-hint">Receiving site or wharf</span></label>
+            <input type="text" id="deliveryAddress" class="cj-input" required>
+          </div>
+
+          <div class="cj-col-6 cj-field">
+            <label class="cj-label" for="pickupDate">Pickup Schedule Date *</label>
+            <input type="date" id="pickupDate" class="cj-input" required>
+          </div>
+
+          <div class="cj-col-6 cj-field">
+            <label class="cj-label" for="goodsOriginCountry">Goods Country of Origin</label>
+            <input type="text" id="goodsOriginCountry" class="cj-input" value="Sudan">
+          </div>
+
+          <!-- Small Interactive Route Map Preview -->
+          <div class="cj-col-12">
+            <label class="cj-label">Route Preview</label>
+            <div id="orderRouteMap" class="cj-map-wrap"></div>
+            <div class="cj-map-hint">Interactive route corridor &copy; OpenStreetMap contributors.</div>
+          </div>
+        </div>
+
+        <div class="cj-actions-row">
+          <button type="button" class="cj-btn-secondary" id="btnBackToStep1">&larr; Back to Cargo Details</button>
+          <button type="button" class="cj-btn-primary" id="btnGoToStep3">Get Rate Quotes &rarr;</button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STEP 3: CHOOSE HOW (TRANSPORT MODES & QUOTE)
+           =================================================================== -->
+      <section class="cj-card" id="stepPanel3" style="display:none;">
+        <div class="cj-card-header">
+          <h2 class="cj-card-title">3. Choose how to transport your goods</h2>
+          <p class="cj-card-desc">Rates and estimated transit days are calculated live from scheduled trade corridors.
+          </p>
+        </div>
+
+        <!-- Mode Cards Grid -->
+        <div class="cj-modes-grid" id="modesContainer">
+          <div style="grid-column: span 3; text-align: center; padding: 32px; color: var(--cj-text-muted);">
+            Fetching route schedules and rate quotes...
+          </div>
+        </div>
+
+        <div id="modeSelectAlert" style="display:none;margin-bottom:16px;" class="cj-error-msg">
+          Please select an available transport mode to continue.
+        </div>
+
+        <div class="cj-actions-row">
+          <button type="button" class="cj-btn-secondary" id="btnBackToStep2">&larr; Back to Route</button>
+          <button type="button" class="cj-btn-primary" id="btnGoToStep4" disabled>Continue to Review &rarr;</button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STEP 4: REVIEW & CONFIRM
+           =================================================================== -->
+      <section class="cj-card" id="stepPanel4" style="display:none;">
+        <div class="cj-card-header">
+          <h2 class="cj-card-title">4. Review and confirm booking</h2>
+          <p class="cj-card-desc">Review your consignment details and itinerary before confirming dispatch registration.
+          </p>
+        </div>
+
+        <!-- Summary Sections -->
+        <div class="cj-summary-list">
+          <!-- Goods Summary -->
+          <div class="cj-summary-section">
+            <div class="cj-summary-section-title">Consignment Goods</div>
+            <div class="cj-summary-grid">
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Category:</span>
+                <span class="cj-summary-v" id="revCargoType">-</span>
+              </div>
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Description:</span>
+                <span class="cj-summary-v" id="revCargoDesc">-</span>
+              </div>
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Weight &amp; Packages:</span>
+                <span class="cj-summary-v" id="revWeightPackages">-</span>
+              </div>
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Handling:</span>
+                <span class="cj-summary-v" id="revHandling">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Route Summary -->
+          <div class="cj-summary-section">
+            <div class="cj-summary-section-title">Route &amp; Scheduled Dates</div>
+            <div class="cj-summary-grid">
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Origin Hub:</span>
+                <span class="cj-summary-v" id="revOrigin">-</span>
+              </div>
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Destination Hub:</span>
+                <span class="cj-summary-v" id="revDestination">-</span>
+              </div>
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Pickup Address:</span>
+                <span class="cj-summary-v" id="revPickupAddress">-</span>
+              </div>
+              <div class="cj-summary-item">
+                <span class="cj-summary-k">Delivery Address:</span>
+                <span class="cj-summary-v" id="revDeliveryAddress">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Transport Mode Highlight -->
+          <div class="cj-price-highlight">
+            <div>
+              <div class="cj-price-highlight-title" id="revModeTitle">Road Freight Transport</div>
+              <div style="font-size:13px;color:var(--cj-text-muted);" id="revTransitETA">Estimated Delivery: 2-3 Days
+              </div>
+            </div>
+            <div class="cj-price-highlight-val" id="revQuotedPrice">$650 USD</div>
+          </div>
+
+          <!-- Dispatch Instructions Field -->
+          <div class="cj-field">
+            <label class="cj-label" for="bookingInstructions">Instructions for Dispatch Driver &amp; Gate (Optional)</label>
+            <textarea id="bookingInstructions" class="cj-textarea"></textarea>
+          </div>
+        </div>
+
+        <div id="bookingSubmitAlert" style="display:none;margin-bottom:16px;"></div>
+
+        <div class="cj-actions-row">
+          <button type="button" class="cj-btn-secondary" id="btnBackToStep3">&larr; Back to Mode Selection</button>
+          <button type="button" class="cj-btn-primary" id="btnConfirmBooking">Confirm and Book Shipment</button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SUCCESS SCREEN
+           =================================================================== -->
+      <section class="cj-success-card" id="successPanel" style="display:none;">
+        <div class="cj-success-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h2 class="cj-success-title">Shipment Confirmed &amp; Queued</h2>
+        <p class="cj-success-desc">
+          Your booking has been registered with operations. You can monitor every milestone and review dispatch
+          documents in your customer account.
+        </p>
+
+        <div class="cj-ref-box">
+          <div class="cj-ref-label">Booking Reference Number</div>
+          <div class="cj-ref-num" id="successRef">CR-2026-XXXXXX</div>
+        </div>
+
+        <div class="cj-eta-box">
+          Estimated Delivery Window: <strong id="successETA">Calculating...</strong>
+        </div>
+
+        <div class="cj-success-actions">
+          <a href="/portal" class="cj-btn-primary" id="btnViewOrder">View My Order &rarr;</a>
+          <button type="button" class="cj-btn-secondary" id="btnBookAnother">Book Another Shipment</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/asil-common.js"></script>
+  <script src="/vendor/leaflet/leaflet.js"></script>
+  <script src="/js/order.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{
+  "packageId": "com.asillogistics.app",
+  "host": "asillogistics.sd",
+  "name": "ASIL Logistics",
+  "launcherName": "ASIL",
+  "display": "standalone",
+  "themeColor": "#0e3b43",
+  "navigationColor": "#071f24",
+  "navigationColorDark": "#071f24",
+  "navigationDividerColor": "#00000000",
+  "navigationDividerColorDark": "#00000000",
+  "backgroundColor": "#071f24",
+  "enableNotifications": true,
+  "startUrl": "/?source=pwa",
+  "iconUrl": "https://asillogistics.sd/img/icons/icon-512.png",
+  "maskableIconUrl": "https://asillogistics.sd/img/icons/icon-maskable-512.png",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "asillogistics"
+  },
+  "splashScreenFadeOutDuration": 300,
+  "fallbackType": "customtabs",
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "shortcuts": [
+    {
+      "name": "Book a Trip",
+      "shortName": "Book Trip",
+      "url": "/transport",
+      "icon": "https://asillogistics.sd/img/icons/icon-192.png"
+    },
+    {
+      "name": "Send Cargo",
+      "shortName": "Send Cargo",
+      "url": "/distribution",
+      "icon": "https://asillogistics.sd/img/icons/icon-192.png"
+    },
+    {
+      "name": "Track",
+      "shortName": "Track",
+      "url": "/track",
+      "icon": "https://asillogistics.sd/img/icons/icon-192.png"
+    },
+    {
+      "name": "My Account",
+      "shortName": "Account",
+      "url": "/portal",
+      "icon": "https://asillogistics.sd/img/icons/icon-192.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://asillogistics.sd/manifest.webmanifest",
+  "features": {
+    "locationDelegation": {
+      "enabled": true
+    },
+    "playBilling": {
+      "enabled": false
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "fullScopeUrl": "https://asillogistics.sd/"
+}

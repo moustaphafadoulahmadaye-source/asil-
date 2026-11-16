@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Privacy Policy | ASIL Logistics</title>
+  <meta name="description" content="Official Privacy Policy and Data Protection Framework of ASIL Logistics. Learn how we safeguard customer records, passenger details, and cargo consignments.">
+  <meta property="og:title" content="Privacy Policy | ASIL Logistics">
+  <meta property="og:description" content="Privacy and data governance policy for ASIL Logistics customer, passenger, and corporate freight operations.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/img/logo.svg">
+  <meta property="og:site_name" content="ASIL Logistics">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#0e3b43">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ASIL">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+
+  <!-- Self-Hosted Styles (No External Google Fonts) -->
+  <link rel="stylesheet" href="/css/asil-core.css">
+  <link rel="stylesheet" href="/css/asil-design.css">
+  <link rel="stylesheet" href="/css/asil-app.css">
+  <script src="/js/pwa.js" defer></script>
+</head>
+<body>
+
+  <!-- Header Navigation (5 Menu Items Max + 1 Quote Button, No Admin/Staff in Header) -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="/" class="brand-link" aria-label="ASIL Logistics Home">
+        <img src="/img/logo.svg" alt="ASIL Logistics Logo" height="42" width="140">
+      </a>
+      <nav class="nav-menu" id="mainNav" aria-label="Primary Navigation">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/#services">Services</a>
+        <a class="nav-link" href="/#about">About</a>
+        <a class="nav-link" href="/#tracking-section">Track</a>
+        <a class="nav-link" href="/#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/#service-request" class="btn-quote">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="legal-hero">
+    <div class="container">
+      <h1 class="dept-hero-title">Privacy Policy</h1>
+      <p class="dept-hero-sub">How ASIL Logistics protects your personal and commercial data.</p>
+    </div>
+  </section>
+
+  <!-- Policy Body -->
+  <main class="page-main-wrap">
+    <div class="container" style="max-width:960px;">
+      <article class="prose-card">
+        <h2>1. Information We Collect</h2>
+        <p>
+          ASIL Logistics collects information required to execute, verify, track, and administer transportation, fleet management, facilities maintenance, and cargo distribution services. This includes:
+        </p>
+        <ul>
+          <li><strong>Customer &amp; Passenger Data:</strong> Full name, phone number, email address, national identity or passport number (when mandatory for interstate or cross-border travel), and pickup/drop-off destinations.</li>
+          <li><strong>Corporate Customer Information:</strong> Registered company name, commercial registration number, authorized representative details, corporate billing address, and employee manifests.</li>
+          <li><strong>Cargo &amp; Consignment Details:</strong> Consignment specifications, package dimensions, estimated gross weights, special handling instructions, declared contents, and delivery waybill references.</li>
+          <li><strong>Operational Telemetry:</strong> Timestamp records, journey milestones, vehicle assignment logs, and delivery status signatures.</li>
+        </ul>
+
+        <h2>2. Use of Information</h2>
+        <p>The information gathered is strictly utilized to:</p>
+        <ul>
+          <li>Process passenger reservations and issue verifiable journey confirmations.</li>
+          <li>Coordinate cargo pickup, linehaul carriage, driver assignment, and last-mile delivery.</li>
+          <li>Facilitate real-time public tracking through randomized, secure booking reference codes.</li>
+          <li>Maintain operational compliance, road transport safety requirements, and billing records.</li>
+          <li>Communicate service notifications, delay advisories, or administrative status changes.</li>
+        </ul>
+
+        <h2>3. Data Security &amp; Encryption Standards</h2>
+        <p>
+          All authentication sessions are protected by cryptographically signed tokens and strict HTTP-only cookies. Passwords are salted and hashed utilizing the industry-standard <code>scrypt</code> key derivation function. Operational databases are segmented with role-based access control (RBAC), ensuring that drivers, dispatchers, departmental coordinators, and administrators only access records essential to their authorized operational duties.
+        </p>
+
+        <h2>4. Public Tracking &amp; Privacy Safeguards</h2>
+        <p>
+          Our public tracking portal allows consignors, consignees, and passengers to monitor journey status. Public tracking results disclose only transit milestones, vehicle types, travel dates, and status history. Internal administrative notes, full identity dossiers, and commercial billing information are strictly masked from unauthorized public viewers.
+        </p>
+
+        <h2>5. Data Retention &amp; Inquiries</h2>
+        <p>
+          Records are retained in accordance with commercial carrier compliance standards. Customers may request review, modification, or verification of their profile data via the Customer Account Portal or by contacting our central dispatch compliance desk.
+        </p>
+        <div class="prose-callout">
+          <strong>Compliance &amp; Inquiries:</strong> Reach our data governance team via the <a href="/#contact">General Inquiries Form</a> or through your authenticated account desk.
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Standard Footer -->
+  <footer class="site-footer"></footer>
+
+  <script src="/js/asil-common.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

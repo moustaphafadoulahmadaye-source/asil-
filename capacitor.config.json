@@ -1,0 +1,43 @@
+{
+  "appId": "com.asillogistics.app",
+  "appName": "ASIL Logistics",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://asillogistics.sd",
+    "cleartext": false,
+    "androidScheme": "https",
+    "iosScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2500,
+      "launchAutoHide": true,
+      "backgroundColor": "#071f24",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0e3b43"
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "DARK"
+    }
+  },
+  "ios": {
+    "contentInset": "automatic",
+    "preferredContentMode": "mobile",
+    "scheme": "ASIL Logistics",
+    "backgroundColor": "#071f24",
+    "allowsLinkPreview": false,
+    "handleApplicationURL": true
+  }
+}

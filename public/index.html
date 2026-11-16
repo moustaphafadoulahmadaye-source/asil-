@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ASIL Logistics | Transport, Freight Distribution &amp; Facility Operations</title>
+  <meta name="description" content="Integrated logistics management across Sudan. Executive passenger transport, heavy freight distribution, procurement, secure warehousing, and commercial facility maintenance.">
+  <meta name="theme-color" content="#0e3b43">
+
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ASIL Logistics | Seamless Transport, Freight &amp; Facility Operations">
+  <meta property="og:description" content="Integrated commercial logistics across Sudan. Transport, freight distribution, warehousing, procurement, and facilities management.">
+  <meta property="og:image" content="/img/logo.svg">
+  <meta property="og:site_name" content="ASIL Logistics">
+
+  <!-- PWA & Favicon Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+
+  <!-- Performance: Preload Critical Hero Asset & Self-Hosted Fonts -->
+  <link rel="preload" href="/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/img/hero-logistics.webp" as="image" type="image/webp">
+
+  <!-- Self-Hosted Stylesheets (Zero External CDNs, Full CSP Compliance) -->
+  <link rel="stylesheet" href="/css/asil-core.css">
+  <link rel="stylesheet" href="/css/asil-design.css">
+  <link rel="stylesheet" href="/css/asil-app.css">
+
+  <!-- Client Interaction & Motion Scripts -->
+  <script src="/js/asil-common.js" defer></script>
+  <script src="/js/home.js" defer></script>
+  <script src="/js/asil-motion.js" defer></script>
+  <script src="/js/pwa.js" defer></script>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. STICKY NAVBAR (Transparent -> Blurred Glass on Scroll)
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container navbar">
+      <a href="/" class="brand-link" aria-label="ASIL Logistics Home">
+        <img src="/img/logo.svg" alt="ASIL Logistics Logo" height="42" width="140">
+      </a>
+
+      <!-- Main Navigation -->
+      <nav class="nav-menu" id="mainNav" aria-label="Primary Navigation">
+        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="/sea">Sea</a>
+        <a class="nav-link" href="/air">Air</a>
+        <a class="nav-link" href="/transport">Fleet</a>
+        <a class="nav-link" href="/subscription">Subscriptions</a>
+        <a class="nav-link" href="#enterprise">Enterprise</a>
+        <a class="nav-link" href="#tracking-section">Track</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link" href="/admin" style="color:var(--gold);font-weight:700;">Admin</a>
+      </nav>
+
+      <!-- Main Actions: Sign in, Order / Book -->
+      <div class="nav-actions">
+        <a href="/admin" class="nav-link" style="color:var(--gold);font-weight:700;padding:8px 12px;font-size:13.5px;text-decoration:none;">Admin</a>
+        <a href="/portal?mode=login&next=/order" class="nav-link" style="color:var(--text-nav);font-weight:600;padding:8px 12px;font-size:14px;text-decoration:none;">Sign in</a>
+        <a href="/order" class="btn-gold" style="padding:10px 18px;font-size:13.5px;text-decoration:none;">Book / Order</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. CINEMATIC HERO SECTION
+       ========================================================================== -->
+  <section class="hero-cinema" id="home">
+    <div class="hero-bg-media">
+      <picture>
+        <source srcset="/img/hero-logistics.webp" type="image/webp">
+        <img src="/img/hero-logistics.jpg" alt="ASIL Logistics Operations Network" width="1920" height="1080" style="width:100%;height:100%;object-fit:cover;">
+      </picture>
+    </div>
+    <div class="hero-gradient-overlay"></div>
+    <div class="container hero-content-wrap">
+      <div class="hero-route-strip reveal-on-scroll">
+        <span class="pulse-indicator"></span>
+        <span class="route-point">Port Sudan (Sea Freight)</span>
+        <span class="route-arrow">&rarr;</span>
+        <span class="route-point">Air Cargo Corridors</span>
+        <span class="route-arrow">&rarr;</span>
+        <span class="route-point">National Road &amp; Fleet Corridors</span>
+      </div>
+
+      <h1 class="hero-headline reveal-on-scroll stagger-1">
+        Your business should not stop because of a <span class="highlight-gold">logistics problem</span>.
+      </h1>
+
+      <p class="hero-tagline reveal-on-scroll stagger-2">
+        ASIL Company manages transport, warehousing, procurement, and building services for commercial enterprises and organisations across Sudan — from single cargo movements to complete operations management.
+      </p>
+
+      <div class="hero-cta-row reveal-on-scroll stagger-3">
+        <a href="/portal?mode=register&next=/order" class="btn-gold">Create Account &amp; Order &rarr;</a>
+        <a href="#tracking-section" class="btn-glass">Track Shipment</a>
+      </div>
+
+      <!-- Floating Glass Tracking Box (Integrated with lookupQuickTrack) -->
+      <div class="hero-tracking-glass-card reveal-on-scroll stagger-4" id="tracking-section">
+        <div class="tracking-header">
+          <div>
+            <div class="tracking-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+              Live Tracking System
+            </div>
+            <h2 class="tracking-title">Track Any Booking or Consignment</h2>
+          </div>
+        </div>
+        <p class="tracking-desc">
+          Enter your reference number (e.g. TR-2026-..., CR-2026-...) and phone last 4 digits or email to verify milestones.
+        </p>
+
+        <!-- Tracking Form (handler: lookupQuickTrack) -->
+        <form id="quickTrackForm" class="track-form-grid" novalidate data-tracker="lookupQuickTrack">
+          <div class="floating-field">
+            <label for="quickTrackInput">Reference Number *</label>
+            <input type="text" id="quickTrackInput" name="quickTrackInput" autocomplete="off" required>
+          </div>
+          <div class="floating-field">
+            <label for="quickTrackVerifier">Phone Last 4 Digits or Email *</label>
+            <input type="text" id="quickTrackVerifier" name="quickTrackVerifier" autocomplete="off" required>
+          </div>
+          <div>
+            <button type="submit" id="btnQuickTrack" class="btn-track" aria-label="Track Shipment">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Track &rarr;
+            </button>
+          </div>
+        </form>
+
+        <div id="quickTrackResult" class="tracking-result-box" style="display:none;margin-top:16px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. SERVICES BENTO GRID (8 Authentic Proposal Services)
+       ========================================================================== -->
+  <section class="section section-light" id="services">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-kicker">Operating Divisions</span>
+        <h2 class="section-title">Logistics, Sourcing &amp; Facility Capabilities</h2>
+        <p class="section-sub">
+          Engineered for corporate reliability and end-to-end execution across Khartoum and all state transit corridors.
+        </p>
+      </div>
+
+      <!-- Quick-Select Filter Chips -->
+      <div class="service-chips-row reveal-on-scroll">
+        <button type="button" class="chip-btn active" data-service="transport">Passenger Transport</button>
+        <button type="button" class="chip-btn" data-service="distribution">Cargo &amp; Freight</button>
+        <button type="button" class="chip-btn" data-service="procurement">Procurement</button>
+        <button type="button" class="chip-btn" data-service="warehousing">Warehousing</button>
+        <button type="button" class="chip-btn" data-service="maintenance">Facilities</button>
+        <button type="button" class="chip-btn" data-service="onboarding">Commercial KYC</button>
+        <button type="button" class="chip-btn" data-service="cleaning">Cleaning</button>
+        <button type="button" class="chip-btn" data-service="gardening">Gardening</button>
+      </div>
+
+      <!-- Bento Grid (Linear / Framer Style) -->
+      <div class="bento-grid">
+        <!-- 1. Passenger Transport (Span 7, Featured Media) -->
+        <a href="/transport" class="bento-card bento-span-7 reveal-on-scroll stagger-1">
+          <div class="bento-card-media">
+            <picture>
+              <source srcset="/img/passenger-travel.webp" type="image/webp">
+              <img src="/img/passenger-travel.jpg" alt="Executive Passenger Transport" loading="lazy" width="700" height="280">
+            </picture>
+          </div>
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <h3 class="bento-title">Passenger Transportation &amp; Fleet Management</h3>
+            <p class="bento-desc">
+              Chauffeured passenger vehicles, executive corporate shuttles, airport transfers, VIP delegations, and regional passenger transport corridors.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-action-label">Open Transport Portal &rarr;</span>
+            <span style="font-size:12px;color:var(--text-muted);font-weight:600;">Individual &amp; Corporate</span>
+          </div>
+        </a>
+
+        <!-- 2. Cargo & Freight (Span 5, Featured Media) -->
+        <a href="/distribution" class="bento-card bento-span-5 reveal-on-scroll stagger-2">
+          <div class="bento-card-media">
+            <picture>
+              <source srcset="/img/cargo-freight.webp" type="image/webp">
+              <img src="/img/cargo-freight.jpg" alt="Commercial Cargo Freight Distribution" loading="lazy" width="500" height="280">
+            </picture>
+          </div>
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            </div>
+            <h3 class="bento-title">Distribution &amp; Freight Haulage</h3>
+            <p class="bento-desc">
+              Inter-state heavy cargo distribution, scheduled courier routes, palletized deliveries, and warehouse-to-door transit with manifest tracking.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-action-label">Open Distribution Portal &rarr;</span>
+            <span style="font-size:12px;color:var(--text-muted);font-weight:600;">Heavy Haulage</span>
+          </div>
+        </a>
+
+        <!-- 3. Procurement & Supply Sourcing (Span 4) -->
+        <div class="bento-card bento-span-4 reveal-on-scroll stagger-1" data-service-trigger="procurement">
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            </div>
+            <h3 class="bento-title">Procurement &amp; Supply Sourcing</h3>
+            <p class="bento-desc">
+              Direct institutional sourcing of commercial goods, equipment requisition, supplier vetting, and consolidated bulk supply management.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <a href="/portal?mode=register&next=/order" class="bento-action-label">Request Procurement &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 4. Secure Warehousing (Span 4) -->
+        <div class="bento-card bento-span-4 reveal-on-scroll stagger-2" data-service-trigger="warehousing">
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 4v12h16V7H4zm2 2h12v3H6V9zm0 5h12v3H6v-3z"/></svg>
+            </div>
+            <h3 class="bento-title">Warehousing &amp; Inventory Management</h3>
+            <p class="bento-desc">
+              Short and long-term secure staging, palletized storage, itemized inventory logging, cross-dock consolidation, and dispatch handling.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <a href="/portal?mode=register&next=/order" class="bento-action-label">Book Warehousing &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 5. Facilities Maintenance (Span 4) -->
+        <a href="/maintenance" class="bento-card bento-span-4 reveal-on-scroll stagger-3">
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+            </div>
+            <h3 class="bento-title">Building &amp; Facility Maintenance</h3>
+            <p class="bento-desc">
+              Preventative and corrective engineering: HVAC, commercial electrical, industrial plumbing, and rapid technician deployment.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-action-label">Open Facilities Portal &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 6. Client Onboarding & KYC (Span 4) -->
+        <a href="/onboarding" class="bento-card bento-span-4 reveal-on-scroll stagger-1">
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <h3 class="bento-title">Client Onboarding &amp; Commercial KYC</h3>
+            <p class="bento-desc">
+              Institutional client registration, commercial documentation validation, credit agreement setup, and corporate supply chain SLA contracts.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-action-label">Open Client Onboarding &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 7. Cleaning Services (Span 4) -->
+        <div class="bento-card bento-span-4 reveal-on-scroll stagger-2" data-service-trigger="cleaning">
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.36 10.04l-1.4-1.4-1.42 1.41 1.41 1.42 1.41-1.43zm-2.83-2.83l-1.41-1.41-1.42 1.41 1.41 1.42 1.42-1.42zM12 4.16L10.59 2.75 9.17 4.16l1.42 1.42L12 4.16zm7.78 12.05l-6.36-6.36c-.39-.39-1.02-.39-1.41 0l-1.42 1.41c-.39.39-.39 1.02 0 1.41l6.36 6.36c.39.39 1.02.39 1.41 0l1.42-1.41c.39-.39.39-1.02 0-1.41zM3 18.5V21h2.5L14.73 11.77l-2.5-2.5L3 18.5z"/></svg>
+            </div>
+            <h3 class="bento-title">Cleaning &amp; Facility Hygiene</h3>
+            <p class="bento-desc">
+              Scheduled commercial facility sanitization, industrial depot deep cleaning, corporate office upkeep, and post-construction cleaning.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <a href="/portal?mode=register&next=/order" class="bento-action-label">Request Cleaning &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 8. Gardening & Grounds (Span 4) -->
+        <div class="bento-card bento-span-4 reveal-on-scroll stagger-3" data-service-trigger="gardening">
+          <div>
+            <div class="bento-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <h3 class="bento-title">Grounds Care &amp; Gardening</h3>
+            <p class="bento-desc">
+              Commercial perimeter landscaping, green area irrigation, vegetation trimming, and exterior commercial grounds maintenance.
+            </p>
+          </div>
+          <div class="bento-footer">
+            <a href="/portal?mode=register&next=/order" class="bento-action-label">Request Grounds Care &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. HOW IT WORKS (Animated 3-Step Interactive Timeline)
+       ========================================================================== -->
+  <section class="section section-dark" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-kicker">Operational Workflow</span>
+        <h2 class="section-title">Execution Engineered in 3 Simple Steps</h2>
+        <p class="section-sub">
+          Grounded, accountable logistics built to deliver predictability for every route, consignment, and facility ticket.
+        </p>
+      </div>
+
+      <div class="timeline-wrap">
+        <!-- Step 1 -->
+        <div class="timeline-step reveal-on-scroll stagger-1">
+          <div class="step-num-node">01</div>
+          <h3 class="step-title">Requirement &amp; Route Intake</h3>
+          <p class="step-desc">
+            Submit your passenger itinerary, cargo manifest, or facility scope. Our dispatch team reviews corridor conditions, cargo specifications, and vehicle requirements.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step reveal-on-scroll stagger-2">
+          <div class="step-num-node">02</div>
+          <h3 class="step-title">Resource Allocation &amp; Waybill</h3>
+          <p class="step-desc">
+            We assign dedicated vehicles, professional commercial drivers, or certified technicians. A verifiable tracking reference and milestone itinerary are immediately issued.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step reveal-on-scroll stagger-3">
+          <div class="step-num-node">03</div>
+          <h3 class="step-title">Monitored Transit &amp; Handover</h3>
+          <p class="step-desc">
+            Continuous operational tracking across key highway corridors. Receipt verification, photographic manifest confirmation, and final digital handover.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. ABOUT & REAL OPERATIONAL CAPABILITIES
+       ========================================================================== -->
+  <section class="section section-light" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal-on-scroll">
+          <picture>
+            <source srcset="/img/fleet-truck.webp" type="image/webp">
+            <img src="/img/fleet-truck.jpg" alt="ASIL Logistics Heavy Haulage Fleet" loading="lazy" width="600" height="480">
+          </picture>
+          <div class="about-badge-float">
+            <div class="about-badge-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:800;font-size:14px;">Sudan Integrated Network</div>
+              <div style="font-size:12px;opacity:0.8;">Khartoum &bull; Gezira &bull; Red Sea</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content reveal-on-scroll stagger-2">
+          <span class="section-kicker">Company Profile</span>
+          <h2 class="section-title">Reliable Logistics Infrastructure Built for Sudan</h2>
+          <p style="font-size:16px;color:var(--text-body);line-height:1.75;margin-bottom:16px;">
+            Established to provide integrated transport, freight distribution, and facility solutions across Sudan. ASIL Logistics combines centralized dispatch management with reliable on-the-ground execution.
+          </p>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:24px;">
+            Whether coordinating executive passenger travel for corporate organizations, linehaul freight distribution across interstate highways, or maintaining vital commercial facilities, our team ensures continuous operational flow with strict route accountability.
+          </p>
+
+          <!-- Authentic Metrics (No Invented Numbers) -->
+          <div class="metrics-strip">
+            <div class="metric-item">
+              <div class="metric-num" data-counter-target="8" data-counter-suffix="">8</div>
+              <div class="metric-label">Core Divisions</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num" data-counter-target="3" data-counter-suffix="">3</div>
+              <div class="metric-label">Key Corridors</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">24/7</div>
+              <div class="metric-label">Dispatch Desk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. WHY CHOOSE US (4 Authentic Pillars)
+       ========================================================================== -->
+  <section class="section section-light" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-kicker">Operational Edge</span>
+        <h2 class="section-title">Why Enterprises Partner with ASIL</h2>
+        <p class="section-sub">
+          Straightforward principles grounded in reliable dispatch control and transparent commercial integrity.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <!-- Pillar 1 -->
+        <div class="pillar-card reveal-on-scroll stagger-1">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z"/></svg>
+          </div>
+          <h3 class="pillar-title">Unified Account Control</h3>
+          <p class="pillar-desc">
+            One accountable desk for passenger bookings, cargo haulage, inventory staging, and maintenance tickets without dealing with disjointed vendors.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="pillar-card reveal-on-scroll stagger-2">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          </div>
+          <h3 class="pillar-title">Corridor Safety &amp; Planning</h3>
+          <p class="pillar-desc">
+            Every route is scheduled with verified safety advisories, road condition updates, and proactive driver communications across all states.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="pillar-card reveal-on-scroll stagger-3">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <h3 class="pillar-title">Direct Dispatch Desk</h3>
+          <p class="pillar-desc">
+            Direct operational access via phone, email, and WhatsApp. Speak with real controllers who have line of sight to equipment and personnel.
+          </p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="pillar-card reveal-on-scroll stagger-4">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h3 class="pillar-title">Transparent Verification</h3>
+          <p class="pillar-desc">
+            Instant online tracking with unique reference numbers and phone verification. Milestones and manifests are preserved for accurate audit records.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ENTERPRISE SOLUTIONS & DEDICATED PORTALS
+       ========================================================================== -->
+  <section class="section section-dark" id="enterprise" style="background:linear-gradient(180deg, #071f24 0%, #0e3b43 100%);color:#ffffff;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);">
+    <div class="container">
+      <div class="section-header reveal-on-scroll" style="text-align:center;">
+        <span class="section-kicker" style="color:var(--gold);">Enterprise Logistics Architecture</span>
+        <h2 class="section-title" style="color:#ffffff;">Complete Corporate Logistics Infrastructure</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.85);max-width:760px;margin:0 auto;">
+          ASIL Company provides enterprise organizations, multinational contractors, diplomatic missions, and commercial businesses with end-to-end multi-modal supply chains and dedicated operational capabilities across Sudan.
+        </p>
+      </div>
+
+      <!-- 5 Dedicated Operational Portals Showcase -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;margin-top:40px;">
+        <!-- 1. Maritime Sea Freight (Chip) -->
+        <div class="glass-card reveal-on-scroll stagger-1" style="background:rgba(255,255,255,0.06);border:1px solid rgba(242,194,48,0.25);border-radius:18px;padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(242,194,48,0.15);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><line x1="12" y1="1" x2="12" y2="5"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Maritime Division</div>
+            <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin:0 0 12px;">Port Sudan Sea Freight</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0 0 20px;">
+              Direct ocean freight, FCL container movements, bulk breakbulk, and customs clearance at Port Sudan Container Terminal with Red Sea transit routes.
+            </p>
+            <ul style="font-size:13px;color:rgba(255,255,255,0.75);margin:0 0 24px;padding-left:18px;line-height:1.7;">
+              <li>FCL (Full Container) &amp; LCL Consolidation</li>
+              <li>Terminal Handling &amp; Customs Clearance</li>
+              <li>Red Sea to Inland Highway Transfer</li>
+            </ul>
+          </div>
+          <a href="/sea" class="btn-gold" style="text-align:center;text-decoration:none;padding:10px 18px;font-size:13.5px;">Explore Sea Freight &rarr;</a>
+        </div>
+
+        <!-- 2. Air Cargo (Rplan) -->
+        <div class="glass-card reveal-on-scroll stagger-2" style="background:rgba(255,255,255,0.06);border:1px solid rgba(242,194,48,0.25);border-radius:18px;padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(242,194,48,0.15);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Aviation Cargo</div>
+            <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin:0 0 12px;">Air Freight &amp; Express Cargo</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0 0 20px;">
+              High-priority air cargo, charter flights, pharmaceutical cold-chain consignments, and urgent freight transit via Port Sudan Airport (PZU).
+            </p>
+            <ul style="font-size:13px;color:rgba(255,255,255,0.75);margin:0 0 24px;padding-left:18px;line-height:1.7;">
+              <li>24 to 48 Hour Fast Corridors</li>
+              <li>Temperature-Controlled Cargo Support</li>
+              <li>Express Diplomatic &amp; Courier Freight</li>
+            </ul>
+          </div>
+          <a href="/air" class="btn-gold" style="text-align:center;text-decoration:none;padding:10px 18px;font-size:13.5px;">Explore Air Freight &rarr;</a>
+        </div>
+
+        <!-- 3. Executive Fleet & Passenger Cars (Care) -->
+        <div class="glass-card reveal-on-scroll stagger-3" style="background:rgba(255,255,255,0.06);border:1px solid rgba(242,194,48,0.25);border-radius:18px;padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(242,194,48,0.15);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Fleet Operations</div>
+            <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin:0 0 12px;">Executive Cars &amp; Regional Fleet</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0 0 20px;">
+              Chauffeured VIP sedans, 4x4 Land Cruiser expedition SUVs, corporate staff shuttles, and inter-city passenger travel across all Sudanese state corridors.
+            </p>
+            <ul style="font-size:13px;color:rgba(255,255,255,0.75);margin:0 0 24px;padding-left:18px;line-height:1.7;">
+              <li>Luxury Sedans &amp; 4x4 Land Cruisers</li>
+              <li>Airport VIP Transfers &amp; Delegations</li>
+              <li>Licensed, Verified Professional Chauffeurs</li>
+            </ul>
+          </div>
+          <a href="/transport" class="btn-gold" style="text-align:center;text-decoration:none;padding:10px 18px;font-size:13.5px;">Explore Fleet &amp; Cars &rarr;</a>
+        </div>
+
+        <!-- 4. Corporate Subscriptions & Retainers (Supcartion) -->
+        <div class="glass-card reveal-on-scroll stagger-4" style="background:rgba(255,255,255,0.06);border:1px solid rgba(242,194,48,0.25);border-radius:18px;padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(242,194,48,0.15);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Commercial Retainers</div>
+            <h3 style="font-size:20px;font-weight:800;color:#ffffff;margin:0 0 12px;">Corporate Subscriptions</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0 0 20px;">
+              Structured monthly service contracts for businesses, NGOs, and embassies with guaranteed SLAs, dedicated dispatchers, and monthly invoicing.
+            </p>
+            <ul style="font-size:13px;color:rgba(255,255,255,0.75);margin:0 0 24px;padding-left:18px;line-height:1.7;">
+              <li>Dedicated Vehicle Allocations</li>
+              <li>Priority Dispatch &amp; Fixed Freight Tariffs</li>
+              <li>Consolidated Monthly Invoicing (Net-30)</li>
+            </ul>
+          </div>
+          <a href="/subscription" class="btn-gold" style="text-align:center;text-decoration:none;padding:10px 18px;font-size:13.5px;">View Subscriptions &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Enterprise Capabilities Grid -->
+      <div style="margin-top:48px;background:rgba(7,31,36,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:36px 32px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+          <div>
+            <h3 style="font-size:22px;font-weight:800;color:#ffffff;margin:0 0 6px;">Enterprise Governance &amp; Operational Standards</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.75);margin:0;">Strict compliance protocols built for international standards and local Sudan operations.</p>
+          </div>
+          <a href="/order" class="btn-gold" style="text-decoration:none;padding:12px 24px;">Access Order Booking Engine &rarr;</a>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:20px;">
+          <div style="padding:16px;background:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
+            <div style="font-weight:700;color:var(--gold);font-size:14px;margin-bottom:6px;">✓ Licensed Entity</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">Fully registered commercial logistics company operating across all Sudanese states.</div>
+          </div>
+          <div style="padding:16px;background:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
+            <div style="font-weight:700;color:var(--gold);font-size:14px;margin-bottom:6px;">✓ 24/7 Operations Desk</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">Continuous dispatch monitoring with direct emergency response across all corridors.</div>
+          </div>
+          <div style="padding:16px;background:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
+            <div style="font-weight:700;color:var(--gold);font-size:14px;margin-bottom:6px;">✓ Verified Chain-of-Custody</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">Digital waybills, cryptographic references, and driver identity verification on every run.</div>
+          </div>
+          <div style="padding:16px;background:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
+            <div style="font-weight:700;color:var(--gold);font-size:14px;margin-bottom:6px;">✓ Multi-Modal Booking</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;">Unified quotation system comparing Sea, Air, and Road transit times and pricing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. HOW TO ORDER & CUSTOMER ACCOUNT ACCESS
+       ========================================================================== -->
+  <section class="section section-light" id="service-request" style="background:var(--bg-surface-subtle);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-kicker">Direct Booking &amp; Tariffs</span>
+        <h2 class="section-title">Ready to Book or Request a Service?</h2>
+        <p class="section-sub">
+          Create an account to configure cargo specifications, get instant route schedules and corridor tariffs, and access live milestone tracking.
+        </p>
+      </div>
+
+      <div class="quote-intake-card reveal-on-scroll" style="text-align:center;padding:48px 32px;max-width:760px;margin:0 auto;">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(14,59,67,0.08);color:var(--primary);display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7.5" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+        </div>
+        <h3 style="font-size:22px;font-weight:800;color:var(--primary);margin:0 0 10px;">Customer Account Required to Order</h3>
+        <p style="font-size:15px;color:var(--text-muted);line-height:1.65;max-width:540px;margin:0 auto 28px;">
+          To ensure verified driver assignments, accurate pricing, and end-to-end milestone history, all transport and operational bookings are managed through your secure customer account.
+        </p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="/portal?mode=register&next=/order" class="btn-gold" style="padding:12px 28px;font-size:15px;text-decoration:none;">Create Account &amp; Order &rarr;</a>
+          <a href="/portal?mode=login&next=/order" class="btn-outline" style="border:1px solid var(--border-medium);background:#ffffff;padding:12px 24px;border-radius:var(--radius-md);text-decoration:none;font-weight:700;color:var(--text-head);display:inline-flex;align-items:center;">Sign In to Portal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. BIG CALL-TO-ACTION BAND
+       ========================================================================== -->
+  <section class="cta-band">
+    <div class="container">
+      <h2 class="cta-title reveal-on-scroll">
+        Need Reliable Logistics or Fleet Operations in Sudan?
+      </h2>
+      <p class="cta-sub reveal-on-scroll stagger-1">
+        Whether you require immediate freight movement, executive passenger transport, or long-term facility management, our dispatch team is ready to assist.
+      </p>
+      <div class="cta-actions reveal-on-scroll stagger-2">
+        <a href="/portal?mode=register&next=/order" class="btn-gold">Create Account to Order &rarr;</a>
+        <a href="#contact" class="btn-glass">Speak with Operations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       10. WORKING CONTACT & INQUIRIES SECTION
+       ========================================================================== -->
+  <section class="section section-light" id="contact">
+    <div class="container">
+      <div class="contact-split-grid">
+        <!-- Contact Info (Left Side - Powered by COMPANY config) -->
+        <div class="contact-info-panel reveal-on-scroll">
+          <span class="section-kicker">Operations Command</span>
+          <h2 class="section-title" style="text-align:left;">Get in Touch Directly</h2>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:12px;">
+            Have an inquiry regarding scheduled freight contracts, VIP passenger transfers, or building maintenance agreements? Reach our dispatch office directly.
+          </p>
+
+          <div id="home-contact-info" style="display:flex;flex-direction:column;gap:12px;">
+            <!-- Populated dynamically by home.js via COMPANY in asil-common.js -->
+            <div class="contact-card-item">
+              <div class="contact-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div>
+                <span class="contact-item-label">Headquarters</span>
+                <span class="contact-item-val">Khartoum, Sudan</span>
+              </div>
+            </div>
+
+            <div class="contact-card-item">
+              <div class="contact-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              </div>
+              <div>
+                <span class="contact-item-label">Operations Schedule</span>
+                <span class="contact-item-val">24/7 Operations Desk &amp; Customer Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Working Inquiries Form (Right Side - POST /api/inquiries) -->
+        <div class="inquiry-form-card reveal-on-scroll stagger-2">
+          <div style="display:flex;gap:8px;margin-bottom:16px;">
+            <button type="button" id="tabInqContact" class="btn-primary btn-sm" style="flex:1;height:38px;border-radius:var(--radius-sm);cursor:pointer;background:var(--primary);color:#fff;border:none;font-weight:700;">General Inquiry</button>
+            <button type="button" id="tabInqQuote" class="btn-outline btn-sm" style="flex:1;height:38px;border-radius:var(--radius-sm);cursor:pointer;background:#ffffff;border:1px solid var(--border-medium);color:var(--text-head);font-weight:700;">Request Quotation</button>
+          </div>
+
+          <h3 id="inquiryTitle" style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--text-head);margin-bottom:6px;">
+            Send an Inquiry to Dispatch
+          </h3>
+          <p id="inquirySub" style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">
+            Fill in your operational requirements. Our central coordinator will review and reply promptly.
+          </p>
+
+          <form id="contactForm" novalidate>
+            <!-- Category & Honeypot Bot Field -->
+            <input type="hidden" id="inquiryCategory" name="category" value="contact">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none !important;" aria-hidden="true">
+
+            <div class="form-status-alert" id="contactStatusBox"></div>
+
+            <div class="grid-12" style="gap:14px;">
+              <div class="floating-field" style="grid-column: span 6;">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" name="name" required autocomplete="name">
+              </div>
+
+              <div class="floating-field" style="grid-column: span 6;">
+                <label for="contactEmail">Email Address *</label>
+                <input type="email" id="contactEmail" name="email" required autocomplete="email">
+              </div>
+
+              <div class="floating-field" style="grid-column: span 6;">
+                <label for="contactPhone">Phone Number *</label>
+                <input type="tel" id="contactPhone" name="phone" required autocomplete="tel">
+              </div>
+
+              <div class="floating-field" style="grid-column: span 6;">
+                <label for="contactDept">Department Inquiry *</label>
+                <select id="contactDept" name="department" required>
+                  <option value="Passenger Transport &amp; Fleet">Passenger Transport &amp; Fleet</option>
+                  <option value="Cargo &amp; Freight Haulage">Cargo &amp; Freight Haulage</option>
+                  <option value="Procurement &amp; Supply Chain">Procurement &amp; Supply Chain</option>
+                  <option value="Warehousing &amp; Inventory">Warehousing &amp; Inventory</option>
+                  <option value="Facilities Maintenance">Facilities Maintenance</option>
+                  <option value="Client Onboarding &amp; KYC">Client Onboarding &amp; KYC</option>
+                  <option value="General Corporate Inquiry">General Corporate Inquiry</option>
+                </select>
+              </div>
+
+              <div class="floating-field" style="grid-column: span 12;">
+                <label for="contactMessage">Message Details *</label>
+                <textarea id="contactMessage" name="message" required></textarea>
+              </div>
+
+              <div style="grid-column: span 12; text-align: right; margin-top: 6px;">
+                <button type="submit" id="btnSubmitInquiry" class="btn-gold" style="width:100%;height:50px;">
+                  Send Message to Operations &rarr;
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       11. STANDARD FOOTER (Populated by asil-common.js)
+       ========================================================================== -->
+  <footer class="site-footer"></footer>
+
+</body>
+</html>

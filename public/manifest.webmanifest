@@ -1,0 +1,100 @@
+{
+  "id": "/?source=pwa",
+  "name": "ASIL Logistics",
+  "short_name": "ASIL",
+  "description": "Executive passenger transportation, heavy freight haulage, building maintenance and corporate dispatch logistics across Sudan.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#071f24",
+  "theme_color": "#0e3b43",
+  "categories": ["business", "logistics", "travel", "productivity"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/img/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/screenshot-desktop.png",
+      "sizes": "1366x900",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "ASIL Logistics Desktop Portal"
+    },
+    {
+      "src": "/img/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ASIL Logistics Mobile Operations"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book a Trip",
+      "short_name": "Book Trip",
+      "description": "Book executive chauffeur & passenger transportation",
+      "url": "/transport",
+      "icons": [
+        {
+          "src": "/img/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Send Cargo",
+      "short_name": "Send Cargo",
+      "description": "Book commercial freight & heavy cargo distribution",
+      "url": "/distribution",
+      "icons": [
+        {
+          "src": "/img/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Track",
+      "short_name": "Track",
+      "description": "Track consignment or passenger journey in real-time",
+      "url": "/track",
+      "icons": [
+        {
+          "src": "/img/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "My Account",
+      "short_name": "Account",
+      "description": "Customer Portal & Verified Bookings",
+      "url": "/portal",
+      "icons": [
+        {
+          "src": "/img/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

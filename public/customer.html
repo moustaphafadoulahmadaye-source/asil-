@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Customer Portal &amp; Booking Management | ASIL Logistics</title>
+  <meta name="description" content="Access your ASIL Logistics customer account, review passenger journey confirmations, track cargo shipments, and view profile history.">
+  <meta property="og:title" content="Customer Portal &amp; Booking Management | ASIL Logistics">
+  <meta property="og:description" content="Customer self-service portal for passenger reservations and cargo freight tracking.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/img/logo.svg">
+  <meta property="og:site_name" content="ASIL Logistics">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#0e3b43">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+
+  <!-- Core & Journey Stylesheets -->
+  <link rel="stylesheet" href="/css/asil-core.css">
+  <link rel="stylesheet" href="/css/asil-design.css">
+  <link rel="stylesheet" href="/css/order-journey.css">
+  <script src="/js/pwa.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-items">
+        <span class="topbar-item" id="topbar-phone"></span>
+        <span class="topbar-item" id="topbar-email"></span>
+      </div>
+      <div class="topbar-items">
+        <span class="topbar-item">24/7 Operations Desk</span>
+        <a href="/admin" style="color:rgba(255,255,255,0.7);text-decoration:none;">Staff Sign In &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container navbar">
+      <a href="/" class="brand-link" aria-label="ASIL Logistics Home">
+        <img src="/img/logo.svg" alt="ASIL Logistics" height="40" width="135">
+      </a>
+      <nav class="nav-menu" id="mainNav" aria-label="Primary Navigation">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/#services">Services</a>
+        <a class="nav-link" href="/#about">About</a>
+        <a class="nav-link" href="/#tracking-section">Track</a>
+        <a class="nav-link" href="/#contact">Contact</a>
+        <a class="nav-link" href="/admin" style="color:var(--gold);font-weight:700;">Admin</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/admin" class="nav-link" style="color:var(--gold);font-weight:700;padding:8px 12px;font-size:13.5px;text-decoration:none;">Admin</a>
+        <a href="/order" class="cj-btn-primary" style="padding:8px 18px;font-size:13.5px;min-height:38px;">+ Book Shipment</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="cj-main" style="padding: 40px 0 60px;">
+    <div class="cj-container">
+
+      <!-- ===================================================================
+           STATE A: UNAUTHENTICATED CUSTOMER (LOGIN / REGISTRATION)
+           =================================================================== -->
+      <div id="unauthSection" style="display:none; max-width: 520px; margin: 0 auto;">
+        <div class="cj-card" style="padding: 32px 28px;">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <h1 style="font-size: 22px; font-weight: 800; color: var(--cj-teal-dark); margin-bottom: 6px;">Customer Portal</h1>
+            <p style="font-size: 14px; color: var(--cj-text-muted);">Manage your cargo shipments and passenger transport bookings</p>
+          </div>
+
+          <!-- Auth Switcher Tabs -->
+          <div style="display: flex; border-bottom: 2px solid #e2e8f0; margin-bottom: 24px;">
+            <button type="button" class="cj-auth-tab is-active" id="tabBtnLogin" data-auth-tab="login" style="flex:1; padding: 10px; background: none; border: none; font-weight: 700; font-size: 15px; cursor: pointer; border-bottom: 2px solid var(--cj-teal); color: var(--cj-teal); margin-bottom: -2px;">Sign In</button>
+            <button type="button" class="cj-auth-tab" id="tabBtnRegister" data-auth-tab="register" style="flex:1; padding: 10px; background: none; border: none; font-weight: 600; font-size: 15px; cursor: pointer; color: var(--cj-text-muted); margin-bottom: -2px;">Create Account</button>
+          </div>
+
+          <!-- 1. LOGIN FORM -->
+          <form id="customerLoginForm" data-handler="handleCustomerLogin" novalidate>
+            <div id="loginStatusNotice" style="display:none;margin-bottom:14px;font-size:13px;padding:10px;border-radius:4px;"></div>
+
+            <div class="cj-field" style="margin-bottom:14px;">
+              <label class="cj-label" for="loginUsername">Username or Email Address *</label>
+              <input type="text" class="cj-input" id="loginUsername" name="loginUser" required autocomplete="username">
+            </div>
+
+            <div class="cj-field" style="margin-bottom:18px;">
+              <label class="cj-label" for="loginPassword">Password *</label>
+              <input type="password" class="cj-input" id="loginPassword" name="loginPass" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" id="btnLoginCustomer" class="cj-btn-primary" style="width:100%; height:46px; font-size:15px;">Sign In to Portal &rarr;</button>
+
+            <div style="text-align:center; margin-top: 18px; font-size:13.5px; color:var(--cj-text-muted);">
+              Need an account? <button type="button" data-auth-tab="register" style="background:none; border:none; color:var(--cj-teal); font-weight:700; cursor:pointer;">Register now</button>
+            </div>
+          </form>
+
+          <!-- 2. REGISTRATION FORM -->
+          <form id="customerRegisterForm" style="display:none;" data-handler="handleCustomerRegister" novalidate>
+            <div id="regStatusNotice" style="display:none;margin-bottom:14px;font-size:13px;padding:10px;border-radius:4px;"></div>
+
+            <!-- Individual vs Company Selector -->
+            <div style="display:flex; gap:12px; margin-bottom:16px;">
+              <label id="cRegLblInd" style="flex:1; display:flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid #cbd5e1; border-radius:6px; cursor:pointer; font-size:13.5px; font-weight:600;">
+                <input type="radio" name="regType" value="individual" checked> Individual
+              </label>
+              <label id="cRegLblComp" style="flex:1; display:flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid #cbd5e1; border-radius:6px; cursor:pointer; font-size:13.5px; font-weight:600;">
+                <input type="radio" name="regType" value="company"> Corporate / Company
+              </label>
+            </div>
+
+            <!-- Company Legal Name (Only if Company) -->
+            <div id="regCompGroup" style="display:none;margin-bottom:14px;" class="cj-field">
+              <label class="cj-label" for="regCompany">Company Legal Name *</label>
+              <input type="text" class="cj-input" id="regCompany">
+            </div>
+
+            <div class="cj-field" style="margin-bottom:14px;">
+              <label class="cj-label" id="regNameLabel" for="regFullName">Full Name *</label>
+              <input type="text" class="cj-input" id="regFullName" required autocomplete="name">
+            </div>
+
+            <div class="cj-field" style="margin-bottom:14px;">
+              <label class="cj-label" for="regUsername">Account Username *</label>
+              <input type="text" class="cj-input" id="regUsername" required autocomplete="username">
+            </div>
+
+            <div class="cj-field" style="margin-bottom:14px;">
+              <label class="cj-label" for="regEmail">Email Address *</label>
+              <input type="email" class="cj-input" id="regEmail" required autocomplete="email">
+            </div>
+
+            <div class="cj-field" style="margin-bottom:14px;">
+              <label class="cj-label" for="regPhone">Phone Number *</label>
+              <input type="tel" class="cj-input" id="regPhone" required autocomplete="tel">
+            </div>
+
+            <div class="cj-field" style="margin-bottom:18px;">
+              <label class="cj-label" for="regPassword">
+                Password *
+                <span class="cj-label-hint">Must be at least 10 characters</span>
+              </label>
+              <input type="password" class="cj-input" id="regPassword" required minlength="10" autocomplete="new-password">
+              <span class="cj-error-msg" id="pwdHintMsg">Password must be at least 10 characters long.</span>
+            </div>
+
+            <button type="submit" class="cj-btn-primary" style="width:100%;" id="btnRegisterCustomer">Create Account &amp; Proceed to Order &rarr;</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           STATE B: AUTHENTICATED CUSTOMER PORTAL
+           =================================================================== -->
+      <div id="authSection" style="display:none;">
+
+        <!-- Customer Profile Summary Bar -->
+        <div class="cj-account-bar portal-profile-card">
+          <div class="cj-user-info">
+            <div class="cj-user-avatar" id="custAvatar">AL</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <h2 class="cj-user-name" id="custFullName">Customer Name</h2>
+                <span class="cj-badge cj-badge-cheapest" id="custTypeBadge">Account</span>
+              </div>
+              <div class="cj-user-sub" id="custCompanySub" style="display:none;"></div>
+              <div class="cj-user-sub">
+                <span id="custEmail"></span> &bull; <span id="custPhone"></span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="/order" class="cj-btn-primary">+ Book New Shipment</a>
+            <button type="button" class="cj-btn-secondary" id="btnOpenProfileModal">Edit Profile</button>
+            <button type="button" class="cj-btn-secondary" id="btnLogoutCustomer">Sign Out</button>
+          </div>
+        </div>
+
+        <!-- Profile Settings Modal -->
+        <div id="profileModal" class="cj-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;">
+          <div class="cj-card" style="max-width:480px;width:100%;max-height:90vh;overflow-y:auto;padding:28px;background:#ffffff;border-radius:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+              <h3 style="font-size:18px;font-weight:800;color:var(--cj-teal-dark);margin:0;">Profile &amp; Account Settings</h3>
+              <button type="button" id="btnCloseProfileModal" style="background:none;border:none;font-size:24px;line-height:1;cursor:pointer;color:var(--cj-text-muted);">&times;</button>
+            </div>
+            
+            <div id="profileStatusNotice" style="display:none;margin-bottom:14px;font-size:13px;padding:10px;border-radius:4px;"></div>
+
+            <form id="profileForm" novalidate>
+              <div class="cj-field" style="margin-bottom:14px;">
+                <label class="cj-label" for="profileFullName">Full Name *</label>
+                <input type="text" class="cj-input" id="profileFullName" required>
+              </div>
+
+              <div class="cj-field" style="margin-bottom:14px;">
+                <label class="cj-label" for="profilePhone">Phone Number *</label>
+                <input type="tel" class="cj-input" id="profilePhone" required>
+              </div>
+
+              <div class="cj-field" id="profileCompanyField" style="margin-bottom:14px;display:none;">
+                <label class="cj-label" for="profileCompany">Company Name</label>
+                <input type="text" class="cj-input" id="profileCompany">
+              </div>
+
+              <div style="border-top:1px solid #e2e8f0;padding-top:14px;margin-top:16px;margin-bottom:14px;">
+                <div style="font-size:13px;font-weight:700;color:var(--cj-teal-dark);margin-bottom:10px;">Change Password (Optional)</div>
+                <div class="cj-field" style="margin-bottom:12px;">
+                  <label class="cj-label" for="profileCurPass">Current Password</label>
+                  <input type="password" class="cj-input" id="profileCurPass" autocomplete="current-password">
+                </div>
+                <div class="cj-field" style="margin-bottom:4px;">
+                  <label class="cj-label" for="profileNewPass">New Password (Min 10 characters)</label>
+                  <input type="password" class="cj-input" id="profileNewPass" minlength="10" autocomplete="new-password">
+                </div>
+              </div>
+
+              <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
+                <button type="button" class="cj-btn-secondary" id="btnCancelProfile">Cancel</button>
+                <button type="submit" class="cj-btn-primary" id="btnSaveProfile">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- VIEW 1: ORDERS LIST VIEW (DEFAULT) -->
+        <div id="portalListView">
+          <!-- Metrics Strip -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;margin-bottom:20px;">
+            <div style="background:#ffffff;border:1px solid var(--cj-border-light);border-radius:var(--cj-radius);padding:16px;">
+              <div style="font-size:24px;font-weight:800;color:var(--cj-teal-dark);" id="custMetricTotal">0</div>
+              <div style="font-size:12.5px;color:var(--cj-text-muted);font-weight:600;">Total Consignments</div>
+            </div>
+            <div style="background:#ffffff;border:1px solid var(--cj-border-light);border-radius:var(--cj-radius);padding:16px;">
+              <div style="font-size:24px;font-weight:800;color:var(--cj-teal);" id="custMetricActive">0</div>
+              <div style="font-size:12.5px;color:var(--cj-text-muted);font-weight:600;">Active &amp; In-Transit</div>
+            </div>
+            <div style="background:#ffffff;border:1px solid var(--cj-border-light);border-radius:var(--cj-radius);padding:16px;">
+              <div style="font-size:24px;font-weight:800;color:#d97706;" id="custMetricPending">0</div>
+              <div style="font-size:12.5px;color:var(--cj-text-muted);font-weight:600;">Pending Review</div>
+            </div>
+            <div style="background:#ffffff;border:1px solid var(--cj-border-light);border-radius:var(--cj-radius);padding:16px;">
+              <div style="font-size:24px;font-weight:800;color:#16a34a;" id="custMetricCompleted">0</div>
+              <div style="font-size:12.5px;color:var(--cj-text-muted);font-weight:600;">Delivered &amp; Fulfilled</div>
+            </div>
+          </div>
+
+          <!-- Orders Filter & Table Card -->
+          <div class="cj-card" style="padding:24px;">
+            <div class="cj-filter-strip">
+              <div>
+                <h3 style="font-size:17px;font-weight:800;color:var(--cj-teal-dark);margin:0 0 2px;">Your Consignments &amp; Orders</h3>
+                <p style="font-size:13px;color:var(--cj-text-muted);margin:0;">Track live route progress, scheduled ETAs, and verified delivery proofs.</p>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div class="cj-filter-tabs">
+                  <button type="button" class="cj-tab-btn is-active" data-status-filter="all">All</button>
+                  <button type="button" class="cj-tab-btn" data-status-filter="active">Active</button>
+                  <button type="button" class="cj-tab-btn" data-status-filter="pending">Pending</button>
+                  <button type="button" class="cj-tab-btn" data-status-filter="completed">Delivered</button>
+                </div>
+                <select id="custFilterType" class="cj-select" style="min-height:36px;font-size:13px;width:140px;padding:6px 10px;">
+                  <option value="all">All Modes</option>
+                  <option value="cargo">Cargo / Freight</option>
+                  <option value="passenger">Passenger</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Orders Table Wrap -->
+            <div class="cj-table-wrap">
+              <table class="cj-table">
+                <thead>
+                  <tr>
+                    <th>Reference</th>
+                    <th>Mode &amp; Service</th>
+                    <th>Corridor / Route</th>
+                    <th>Estimated Delivery</th>
+                    <th>Rate</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="custBookingsBody">
+                  <tr><td colspan="7" style="text-align:center;padding:24px;color:var(--cj-text-muted);">Loading your bookings...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 2: ORDER DETAIL VIEW (STEP 4 OF JOURNEY) -->
+        <div id="portalDetailView" class="cj-detail-view" style="display:none;">
+          <!-- Detail Header -->
+          <div class="cj-detail-header">
+            <div>
+              <button type="button" class="cj-btn-secondary" id="btnBackToOrdersList" style="margin-bottom:12px;min-height:36px;padding:6px 14px;font-size:13px;">
+                &larr; Back to All Orders
+              </button>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <h2 style="font-size:22px;font-weight:800;color:var(--cj-teal-dark);margin:0;">Consignment <span id="dtlRefNum">-</span></h2>
+                <span id="dtlStatusChip"></span>
+              </div>
+              <!-- Route Corridor Strip -->
+              <div class="cj-route-strip">
+                <span id="dtlOriginName">Origin</span>
+                <span class="cj-route-arrow">&rarr;</span>
+                <span id="dtlDestName">Destination</span>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <span style="font-size:12px;color:var(--cj-text-muted);display:block;">Transport Mode</span>
+              <strong style="font-size:16px;color:var(--cj-teal);" id="dtlModeBadge">Road Freight</strong>
+            </div>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div class="cj-summary-grid" style="margin-bottom:24px;">
+            <div class="cj-summary-section">
+              <div class="cj-summary-section-title">Delivery Schedule (ETA)</div>
+              <div style="font-size:16px;font-weight:800;color:var(--cj-teal-dark);" id="dtlETAWindow">Scheduled</div>
+              <div style="font-size:12.5px;color:var(--cj-text-muted);margin-top:2px;" id="dtlPickupDate">Pickup Date: -</div>
+            </div>
+
+            <div class="cj-summary-section">
+              <div class="cj-summary-section-title">Quoted Rate</div>
+              <div style="font-size:20px;font-weight:800;color:var(--cj-text-main);" id="dtlQuotedPrice">-</div>
+              <div style="font-size:12px;color:var(--cj-text-muted);margin-top:2px;">Confirmed Corridor Tariff</div>
+            </div>
+
+            <div class="cj-summary-section">
+              <div class="cj-summary-section-title">Cargo Specifications</div>
+              <div style="font-size:14px;font-weight:700;color:var(--cj-text-main);" id="dtlCargoType">-</div>
+              <div style="font-size:12.5px;color:var(--cj-text-muted);margin-top:2px;" id="dtlCargoWeight">-</div>
+            </div>
+          </div>
+
+          <!-- Pickup & Delivery Addresses -->
+          <div class="cj-summary-section" style="margin-bottom:28px;">
+            <div class="cj-summary-section-title">Physical Addresses</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13.5px;">
+              <div>
+                <span style="font-size:11px;color:var(--cj-text-muted);text-transform:uppercase;font-weight:700;display:block;">Pickup Location</span>
+                <strong id="dtlPickupAddr">-</strong>
+              </div>
+              <div>
+                <span style="font-size:11px;color:var(--cj-text-muted);text-transform:uppercase;font-weight:700;display:block;">Delivery Destination</span>
+                <strong id="dtlDeliveryAddr">-</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vertical Timeline Section -->
+          <h3 style="font-size:16px;font-weight:800;color:var(--cj-teal-dark);margin:0 0 4px;">Live Shipment Milestones &amp; History</h3>
+          <p style="font-size:13px;color:var(--cj-text-muted);margin:0 0 16px;">Chronological progression from order confirmation through dispatch and final delivery.</p>
+
+          <div class="cj-timeline" id="dtlTimeline">
+            <!-- Populated dynamically with done/current/pending items -->
+          </div>
+
+          <!-- Documents Section -->
+          <div class="cj-summary-section" id="dtlDocsSection" style="margin-top:20px;display:none;">
+            <div class="cj-summary-section-title">Consignment Documents</div>
+            <div id="dtlDocsList" style="display:flex;flex-direction:column;gap:8px;"></div>
+          </div>
+
+          <!-- Support Contact Card -->
+          <div class="cj-support-box">
+            <div>
+              <div class="cj-support-title">Have a Question About This Shipment?</div>
+              <div class="cj-support-desc">Contact our operations dispatch desk directly quoting your reference.</div>
+            </div>
+            <div class="cj-support-links">
+              <a href="tel:+249183770000" class="cj-btn-secondary" style="font-size:13px;padding:8px 14px;min-height:36px;" id="dtlSupportPhone">Call Dispatch</a>
+              <a href="mailto:operations@asillogistics.sd" class="cj-btn-secondary" style="font-size:13px;padding:8px 14px;min-height:36px;" id="dtlSupportEmail">Email Desk</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/asil-common.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/customer.js"></script>
+</body>
+</html>

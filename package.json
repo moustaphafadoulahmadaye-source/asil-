@@ -1,0 +1,27 @@
+{
+  "name": "asil-logistics",
+  "version": "1.0.0",
+  "description": "ASIL Company website + admin operations app (Express + SQLite)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "create-admin": "node tools/create-admin.js",
+    "backup": "node tools/backup.js",
+    "reset-demo": "node tools/reset-demo.js",
+    "test": "node tools/run-tests.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.5.0",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
+    "leaflet": "^1.9.4",
+    "multer": "^2.5.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.1"
+  }
+}
