@@ -459,6 +459,25 @@ function verifyPasswordAgainstHash(password, storedHash) {
   return false;
 }
 
+// Ensure Super Admin accounts exist on launch (local or production Render)
+try {
+  const superAdminExists = db.prepare("SELECT id FROM users WHERE role='super_admin' LIMIT 1").get();
+  if (!superAdminExists) {
+    const now = Date.now();
+    db.prepare(`
+      INSERT OR IGNORE INTO users (id, username, email, password_hash, full_name, phone, role, department, customer_type, company_name, status, created, session_version, email_verified)
+      VALUES (?, 'Asil', 'hashim222kings@gmail.com', ?, 'Asil', '+249 912 000000', 'super_admin', 'all', '', '', 'active', ?, 1, 1)
+    `).run('USR-339e36e7-70e9-451e-ba3e-6018deb192d9', hashPassword('Asil'), now);
+    db.prepare(`
+      INSERT OR IGNORE INTO users (id, username, email, password_hash, full_name, phone, role, department, customer_type, company_name, status, created, session_version, email_verified)
+      VALUES (?, 'admin', 'admin@asillogistics.sd', ?, 'Super Administrator', '+249 183 770 000', 'super_admin', 'all', '', '', 'active', ?, 1, 1)
+    `).run('USR-001', hashPassword('admin123'), now);
+    console.log('Auto-seeded initial Super Admin accounts: Asil & admin');
+  }
+} catch (e) {
+  console.error('Error auto-seeding super admin:', e.message);
+}
+
 const app = express();
 app.disable('x-powered-by'); app.set('trust proxy', 1);
 app.use(express.json({ limit: '2mb' }));
